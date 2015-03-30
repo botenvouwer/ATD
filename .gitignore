@@ -57,3 +57,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/ATD/nbproject/private/
+/ATD/build/
+/ATD/dist/
+/test/nbproject/private/
+/test/build/

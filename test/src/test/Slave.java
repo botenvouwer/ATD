@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package atd;
+package test;
 
 /**
  *
  * @author william
  */
-public class Customers {
+public class Slave extends Master{
     
 }
