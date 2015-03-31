@@ -1,9 +1,11 @@
 package atd;
 
-class Car {
+public class Car {
+    private String licensePlate;
+    private String brand;
 
-    int getLicensePlate() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getLicensePlate() {
+        return licensePlate;
     }
     
 }

@@ -24,7 +24,7 @@ public class Customer {
         }
     }
     
-    public Car getCar(int licensePlate) {
+    public Car getCar(String licensePlate) {
         for(Car lookingFor : allCars) {
             if(lookingFor.getLicensePlate() == licensePlate) {
                return lookingFor; 
