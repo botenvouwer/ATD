@@ -23,6 +23,27 @@ public class Customer {
             allCars.add(newCar);
         }
     }
+    
+    public Car getCar(int licensePlate) {
+        for(Car lookingFor : allCars) {
+            if(lookingFor.getLicensePlate() == licensePlate) {
+               return lookingFor; 
+            }
+        }
+        return null;
+    }
+    
+    public ArrayList<Car> getAllCars() {
+        return allCars;
+    }
+    
+    public boolean equals(Customer newCustomer) {
+        if(newCustomer.getNumber() == number) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public int getNumber() {
         return number;
@@ -38,6 +59,10 @@ public class Customer {
     
     public String getZipcode() {
         return zipcode;
+    }
+    
+    public String toString() {
+        return "";
     }
     
     

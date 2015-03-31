@@ -24,6 +24,15 @@ public class Customers extends ArrayList<Customer>{
         return false;
     }
     
+    public boolean existsObject(Customer newCustomer) {
+        for( Customer lookingFor : this) {
+            if(lookingFor.equals(newCustomer)) {
+                return true;
+            } 
+        }
+        return false;
+    }
+    
     public void remove(Customer deleteCustomer) {
         remove(deleteCustomer.getNumber());
     }
