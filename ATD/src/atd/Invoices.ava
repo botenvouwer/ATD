@@ -5,21 +5,12 @@ import java.util.ArrayList;
 public class Invoices extends ArrayList<Invoice>{
     
     public Invoice find(int number) {
-        if(exists(number)) {
-            for( Invoice lookingFor : this) {
-                if(lookingFor.getNumber() == number) {
-                    return lookingFor;
-                } 
-            }
-        } 
-        return null;
-    }
-    
-    public boolean exists(int number) {
-        for( Invoice lookingFor : this) {
-            if(lookingFor.getNumber() == number) return true;
+    	for( Invoice lookingFor : this) {
+    		if(lookingFor.getNumber() == number) {
+    			return lookingFor;
+            } 
         }
-        return false;
+        return null;
     }
     
     @Override
@@ -45,7 +36,7 @@ public class Invoices extends ArrayList<Invoice>{
     
     @Override
     public boolean add(Invoice newInvoice) {
-        if(exists(newInvoice.getNumber())) {
+    	if(contains(newInvoice)) {
         	super.add(newInvoice);
             return true;
         }
