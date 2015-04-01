@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Begin punt van applicatie
  */
 package atd;
 
@@ -27,6 +25,12 @@ public class ATD extends Application {
     //Invoices invoiceList;
     //Repairs repairList
     
+    //Menu buttons
+    Button start;
+    Button voorraad;
+    Button klanten;
+    Button werk;
+    
     //file names of stored data
     private String stockFile = "stock.obj";
     private String customerFile = "cust.obj";
@@ -37,16 +41,17 @@ public class ATD extends Application {
         load(); //load stored data
         
         VBox menu = new VBox();
+        menu.getStyleClass().add("mainmenu");
         
-        Button start = new Button("start");
-        Button voorraad = new Button("voorraadbeheer");
-        Button klanten = new Button("klantenbeheer");
-        Button werk = new Button("werkplaats");
+        start = new Button("start");
+        voorraad = new Button("voorraadbeheer");
+        klanten = new Button("klantenbeheer");
+        werk = new Button("werkplaats");
         
         menu.getChildren().addAll(start, voorraad, klanten, werk);
         
         mainScreen.setLeft(menu);
-        mainScreen.setCenter(new Start());
+        setStart();
         
         Scene scene = new Scene(mainScreen);
         scene.getStylesheets().add("atd/style.css");
@@ -57,6 +62,23 @@ public class ATD extends Application {
         stage.setScene(scene);
         stage.show();
         stage.setOnCloseRequest(e -> save()); // save data
+        stage.setMinHeight(600);
+        stage.setMinWidth(800);
+    }
+    
+    public void setStart(){
+        Start start = new Start();
+        start.getStyleClass().add("schermdeel");
+        
+        mainScreen.setCenter(start);
+    }
+    
+    public void setVoorraad(){
+        
+    }
+    
+    public void setWerkplaats(){
+        
     }
 
     /**

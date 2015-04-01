@@ -1,0 +1,9 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Studie product
+${licensePrefix}Bestand gemaakt voor studie product. Kopieren en aanpassen is toegestaan.
+${licensePrefix}Het is niet de bedoeling dit bestand te gebruiken voor je eiegen school opdracht.
+<#if licenseLast??>
+${licenseLast}
+</#if>
