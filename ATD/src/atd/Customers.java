@@ -19,7 +19,7 @@ public class Customers extends ArrayList<Customer>{
     
     @Override
     public boolean add(Customer newCustomer) {
-        if(contains(newCustomer)) {
+        if(!contains(newCustomer)) {
             super.add(newCustomer);
             return true;
         }

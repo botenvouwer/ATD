@@ -3,6 +3,13 @@
  */
 package atd;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,6 +24,7 @@ import javafx.stage.Stage;
  */
 public class ATD extends Application {
     
+    private Stage stage;
     private BorderPane mainScreen = new BorderPane();
     
     //main classes we use
@@ -37,6 +45,7 @@ public class ATD extends Application {
     //String repairFile = "stock.obj":
     
     public void start(Stage stage) {
+        this.stage = stage;
         
         load(); //load stored data
         
@@ -44,7 +53,9 @@ public class ATD extends Application {
         menu.getStyleClass().add("mainmenu");
         
         start = new Button("start");
+        start.setOnAction(e -> setStart());
         voorraad = new Button("voorraadbeheer");
+        voorraad.setOnAction(e -> setVoorraad());
         klanten = new Button("klantenbeheer");
         werk = new Button("werkplaats");
         
@@ -67,23 +78,23 @@ public class ATD extends Application {
     }
     
     public void setStart(){
-        Start start = new Start();
-        start.getStyleClass().add("schermdeel");
+        Start scherm = new Start();
+        scherm.getStyleClass().add("schermdeel");
         
-        mainScreen.setCenter(start);
+        mainScreen.setCenter(scherm);
     }
     
     public void setVoorraad(){
+        VoorraadBeheer scherm = new VoorraadBeheer(stage, stock);
+        scherm.getStyleClass().add("schermdeel");
         
+        mainScreen.setCenter(scherm);
     }
     
     public void setWerkplaats(){
         
     }
-
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
         launch(args);
     }
@@ -93,7 +104,18 @@ public class ATD extends Application {
     }
     
     private void load(){
-        //todo: save all data on start
+        
+        
+        
+    }
+    
+    //Dit zou efficenter kunnen (Bijvoorbeeld dynamisch) maar geen tijd voor fuck het dit werkt ook
+    private void loadKlanten(){
+        
+    }
+    
+    private void loadPersoneel(){
+        
     }
     
 }
