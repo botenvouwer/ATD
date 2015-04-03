@@ -1,4 +1,4 @@
-package atd;
+package domeinModel;
 
 public class Article {
     private String name;

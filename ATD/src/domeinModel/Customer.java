@@ -1,4 +1,4 @@
-package atd;
+package domeinModel;
 
 import java.util.ArrayList;
 

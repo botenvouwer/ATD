@@ -5,6 +5,7 @@
  */
 package atd;
 
+import domeinModel.Car;
 import java.util.ArrayList;
 
 /**
