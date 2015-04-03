@@ -37,6 +37,7 @@ public class ATD extends Application {
     Button start;
     Button voorraad;
     Button klanten;
+    Button personeel;
     Button werk;
     
     //file names of stored data
@@ -54,10 +55,12 @@ public class ATD extends Application {
         
         start = new Button("start");
         start.setOnAction(e -> setStart());
-        voorraad = new Button("voorraadbeheer");
+        voorraad = new Button("voorraad");
         voorraad.setOnAction(e -> setVoorraad());
-        klanten = new Button("klantenbeheer");
+        klanten = new Button("klanten");
+        personeel = new Button("personeel");
         werk = new Button("werkplaats");
+        werk.setOnAction(e -> setWerkplaats());
         
         menu.getChildren().addAll(start, voorraad, klanten, werk);
         
@@ -85,14 +88,17 @@ public class ATD extends Application {
     }
     
     public void setVoorraad(){
-        VoorraadBeheer scherm = new VoorraadBeheer(stage, stock);
+        SchermdeelVoorraadBeheer scherm = new SchermdeelVoorraadBeheer(stage, stock);
         scherm.getStyleClass().add("schermdeel");
         
         mainScreen.setCenter(scherm);
     }
     
     public void setWerkplaats(){
+        SchermdeelWerkplaats scherm = new SchermdeelWerkplaats();
+        scherm.getStyleClass().add("schermdeel");
         
+        mainScreen.setCenter(scherm);
     }
     
     public static void main(String[] args) {
