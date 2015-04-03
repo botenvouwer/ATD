@@ -17,13 +17,13 @@ import javafx.stage.Stage;
  * Geimplemeteert vanuit subproject voorraadbeheer
  * @author william
  */
-public class VoorraadBeheer extends BorderPane{
+public class SchermdeelVoorraadBeheer extends BorderPane{
     
     private Stage applicatie;
     private Stock voorraad;
     private VBox records;
     
-    public VoorraadBeheer(Stage app, Stock s){
+    public SchermdeelVoorraadBeheer(Stage app, Stock s){
         
         applicatie = app;
         voorraad = s;
