@@ -5,10 +5,29 @@
  */
 package atd;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author william
  */
-public class Stock {
+public class Stock extends ArrayList<Article> {
     
+    public boolean conatins(Article newArticle) {
+        for(Article refArticle : this) {
+            if(newArticle.equals(refArticle)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean add(Article newArticle) {
+        if (this.contains(newArticle)) {
+            super.add(newArticle);
+            return true;
+        }
+        return false;
+    }
 }

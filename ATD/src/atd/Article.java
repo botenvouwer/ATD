@@ -44,12 +44,14 @@ public class Article {
         inStock -= lostStock;
     }
     
-    /* TODO: 
-    public InvoiceLine getInvoiceLine() {
-        new InvoiceLine(this.toString(), price);
-    }*/
-    
     public String toString() {
         return name + " costs " + price;
+    }
+    
+    public boolean equals(Article refArticle) {
+        if(refArticle.getNumber() == this.number) {
+            return true;
+        }
+        return false;
     }
 }
