@@ -80,6 +80,17 @@ public class Repair {
         return false;
     }
     
+    public boolean equals(Object o){
+        
+        if(!(o instanceof Repair)){
+            return false;
+        }
+        
+        Repair check = (Repair)o;
+        
+        return (date.equals(check.getDate()) && customer.equals(check.getCustomer()) && car.equals(check.getCar()));
+    }
+    
     public String toString(){
         return String.format("%s voor %s %s ingeplant op %s voor werknemer %s gebruikte artikelen %s", type.name(), customer, car, date, repairGuy, usedArticle.size());
     }

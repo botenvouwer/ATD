@@ -33,8 +33,8 @@ public class RepairArticle {
         }
     }
     
-    public boolean equals(RepairArticle a){
-        return (a.getArticle().equals(this));
+    public boolean equals(Object a){
+        return (a instanceof RepairArticle && ((RepairArticle)a).getArticle().equals(this));
     }
     
     public String toString(){
