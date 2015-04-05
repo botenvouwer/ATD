@@ -1,15 +1,15 @@
 package domeinModel;
 
+import Exceptions.StockException;
+
 public class Article {
     private String name;
     private int number;
     private int inStock;
-    private double price;
     
-    public Article(String name, int number, double Price) {
+    public Article(String name, int number) {
         this.name = name;
         this.number = number;
-        this.price = Price;
     }
     
     public String getName() {
@@ -20,36 +20,51 @@ public class Article {
         return number;
     }
     
-    public double getPrice() {
-        return price;
-    }
-    
     public int getInStock() {
         return inStock;
     }
     
-    public void setPrice(double newPrice) {
-        price = newPrice;
+    public void setInStock(int countedStock) throws StockException{
+        
+        if(countedStock >= 0){
+            inStock = countedStock;
+        }
+        else{
+            throw new StockException();
+        }
     }
     
-    public void setInStock(int countedStock) {
-        inStock = countedStock;
+    public void stockIn(int add) throws StockException{
+        
+        if(add >= 0){
+            inStock += add;
+        }
+        else{
+            throw new StockException();
+        }
     }
     
-    public void stockIn(int newStock) {
-        inStock += newStock;
-    }
-    
-    public void StockOut(int lostStock) {
-        inStock -= lostStock;
+    public void StockOut(int lose) throws StockException{
+        
+        if(lose > inStock){
+            throw new StockException("Uitboek aantal is groter dan voorraad en voorraad mag niet negatief geboekt worden");
+        }
+        
+        if(lose >= 0){
+            inStock -= lose;
+        }
+        else{
+            throw new StockException();
+        }
     }
     
     public String toString() {
-        return name + " costs " + price;
+        return String.format("%s - %s: %s in voorraad", number, name, inStock);
     }
     
-    public boolean equals(Article refArticle) {
-        if(refArticle.getNumber() == this.number) {
+    public boolean equals(Object refArticle) {
+        
+        if (refArticle instanceof Article && ((Article)refArticle).getNumber() == this.number) {
             return true;
         }
         return false;
