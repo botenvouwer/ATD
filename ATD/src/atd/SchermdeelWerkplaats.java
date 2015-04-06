@@ -5,7 +5,10 @@
  */
 package atd;
 
-import javafx.beans.property.SimpleStringProperty;
+import domeinModel.Car;
+import domeinModel.Employee;
+import domeinModel.Task;
+import java.util.Date;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
@@ -21,70 +24,55 @@ import javafx.scene.layout.BorderPane;
  */
 public class SchermdeelWerkplaats extends BorderPane{
     
+    //ATD moeder klasse met alle collecties etc.
+    private ATD $;
+    
     TableView tabel = new TableView();
     Button nieuwTaak = new Button("Nieuwe taak inboeken");
-    final ObservableList<Person> data = FXCollections.observableArrayList(
-        new Person("Jacob", "Smith", "jacob.smith@example.com"),
-        new Person("Isabella", "Johnson", "isabella.johnson@example.com"),
-        new Person("Ethan", "Williams", "ethan.williams@example.com"),
-        new Person("Emma", "Jones", "emma.jones@example.com"),
-        new Person("Michael", "Brown", "michael.brown@example.com")
-    );
+    final ObservableList<Task> data = FXCollections.observableArrayList();
     
-    public static class Person {
-        private String firstName;
-        private String lastName;
-        private String email;
-
-        private Person(String fName, String lName, String email) {
-            this.firstName = new String(fName);
-            this.lastName = new String(lName);
-            this.email = new String(email);
-        }
-
-        public String getFirstName() {
-            return firstName;
-        }
-        public void setFirstName(String fName) {
-            firstName = fName;
-        }
-
-        public String getLastName() {
-            return lastName;
-        }
-        public void setLastName(String fName) {
-            lastName = fName;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-        public void setEmail(String fName) {
-            email = fName;
-        }
-
-    }
-    
-    public SchermdeelWerkplaats() {
+    public SchermdeelWerkplaats(ATD a) {
+        
+        $ = a;
+        
+        data.addAll($.agenda);
         
         tabel.setEditable(false);
         tabel.setPlaceholder(new Label("Geen taken"));
         
-        TableColumn c1 = new TableColumn("test");
-        TableColumn c2 = new TableColumn("pest");
-        TableColumn c3 = new TableColumn("boom");
+        TableColumn c1 = new TableColumn("datum");
+        c1.setMinWidth(400);
+        TableColumn c2 = new TableColumn("type");
+        c2.setMinWidth(100);
+        TableColumn c3 = new TableColumn("uren");
+        c3.setMinWidth(100);
+        TableColumn c4 = new TableColumn("klaar");
+        c4.setMinWidth(200);
+        TableColumn c5 = new TableColumn("Werknemer");
+        c5.setMinWidth(300);
+        TableColumn c6= new TableColumn("Auto");
+        c6.setMinWidth(400);
         
         c1.setCellValueFactory(
-            new PropertyValueFactory<Person,String>("firstName")
+            new PropertyValueFactory<Task,Date>("date")
         );
         c2.setCellValueFactory(
-            new PropertyValueFactory<Person,String>("lastName")
+            new PropertyValueFactory<Task,Task.TaskType>("type")
         );
         c3.setCellValueFactory(
-            new PropertyValueFactory<Person,String>("email")
+            new PropertyValueFactory<Task,Double>("hours")
+        );
+        c4.setCellValueFactory(
+            new PropertyValueFactory<Task,Boolean>("done")
+        );
+        c5.setCellValueFactory(
+            new PropertyValueFactory<Task,Employee>("employee")
+        );
+        c6.setCellValueFactory(
+            new PropertyValueFactory<Task,Car>("car")
         );
         
-        tabel.getColumns().addAll(c1, c2, c3);
+        tabel.getColumns().addAll(c1, c2, c3, c4, c5, c6);
         tabel.setItems(data);
         
         setCenter(tabel);

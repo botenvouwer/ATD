@@ -11,7 +11,7 @@ public class Customer {
     private String zipcode;
     private String place;
 
-    public Customer(int number, String adress, String name, String zipcode, String place) {
+    public Customer(int number, String name, String adress, String zipcode, String place) {
         this.number = number;
         this.name = name;
         this.adress = adress;
@@ -69,7 +69,7 @@ public class Customer {
     }
 
     public String toString() {
-        return number + " is called " + name + " and lives at " + adress + " " + zipcode + " " + place + "\n List of cars: \n" + getAllCars();
+        return "customer "+number + " is called " + name + " and lives at " + adress + " " + zipcode + " " + place + "\n List of cars: \n" + getAllCars();
     }
 
 }

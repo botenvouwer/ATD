@@ -34,7 +34,7 @@ public class RepairArticle {
     }
     
     public boolean equals(Object a){
-        return (a instanceof RepairArticle && ((RepairArticle)a).getArticle().equals(this));
+        return (a instanceof RepairArticle && ((RepairArticle)a).getArticle().equals(this.article));
     }
     
     public String toString(){
