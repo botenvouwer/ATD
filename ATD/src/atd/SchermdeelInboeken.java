@@ -10,7 +10,6 @@ import domeinModel.Customer;
 import domeinModel.Employee;
 import domeinModel.Task;
 import domeinModel.Task.TaskType;
-import domeinModel.Werkplaats;
 import java.time.LocalDate;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -36,11 +35,14 @@ public class SchermdeelInboeken extends Schermdeel{
     public SchermdeelInboeken(ATD a){
         super(a);
         
-        if($.customers.size() == 0){
+        setTop(meldingen);
+        meldingen.getStyleClass().add("error");
+        
+        if($.customers.isEmpty()){
             meldingen.setText("Er zijn geen klanten. Ga naar klanten beheer en voeg een klant toe. Zonder klant kun je geen taak aanmaken.");
             return;
         }
-        else if($.employees.size() == 0){
+        else if($.employees.isEmpty()){
             meldingen.setText("Er zijn geen werknemers. Ga naar werknemer beheer en voeg een klant toe. Zonder werknemers kun je geen taak aanmaken.");
             return;
         }
@@ -62,10 +64,10 @@ public class SchermdeelInboeken extends Schermdeel{
         
         ok.setOnAction(e -> opslaan());
         
-        parent.getChildren().addAll(meldingen, klant, klantSelect, auto, autoSelect, taak, taakSelect, personeel, personeelSelect, datum, date, ok);
+        meldingen.getStyleClass().add("error");
+        parent.getChildren().addAll(klant, klantSelect, auto, autoSelect, taak, taakSelect, personeel, personeelSelect, datum, date, ok);
         
         setCenter(parent);
-        getStyleClass().add("center");
         
         
     }
@@ -74,7 +76,7 @@ public class SchermdeelInboeken extends Schermdeel{
         autoSelect.getItems().clear();
         autoSelect.getItems().addAll(c.getAllCars());
         
-        if(c.getAllCars().size() == 0){
+        if(c.getAllCars().isEmpty()){
             meldingen.setText("Deze klant heeft nog auto's voeg deze toe in klant beheer");
         }
         else{

@@ -11,11 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import domeinModel.*;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,9 +36,10 @@ public class ATD extends Application {
     
     public ATD() {
         try {
-        $ = new Werkplaats();
+            $ = new Werkplaats();
         } catch (IOException | ClassNotFoundException ex) {
-        System.out.println("test");
+            ConfirmBox confirm = new ConfirmBox(stage, "Error: Er is iets mis gegaan", ex.getMessage());
+            confirm.showAndWait();
         }
     }
     
@@ -61,10 +58,11 @@ public class ATD extends Application {
         klanten = new Button("klanten");
         klanten.setOnAction(e -> setKlanten());
         personeel = new Button("personeel");
+        personeel.setOnAction(e -> setPersoneel());
         werk = new Button("werkplaats");
         werk.setOnAction(e -> setWerkplaats());
         
-        menu.getChildren().addAll(start, voorraad, klanten, werk, personeel);
+        menu.getChildren().addAll(start, werk, voorraad, klanten, personeel);
         
         mainScreen.setLeft(menu);
         setStart();
@@ -103,6 +101,10 @@ public class ATD extends Application {
     
     public void setKlanten() {
         mainScreen.setCenter(new SchermdeelKlanten(this));
+    }
+    
+    public void setPersoneel(){
+        mainScreen.setCenter(new SchermdeelPersoneel(this));
     }
     
     public static void main(String[] args) {

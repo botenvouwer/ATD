@@ -96,7 +96,7 @@ public class SchermdeelVoorraadBeheer extends Schermdeel {
 
         //verwijder
         TableColumn<Article, Article> verwijder = new TableColumn<>("Verwijderen");
-        verwijder.setMinWidth(140);
+        verwijder.setMinWidth(160);
 
         verwijder.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Article, Article>, ObservableValue<Article>>() {
             public ObservableValue<Article> call(TableColumn.CellDataFeatures<Article, Article> features) {
@@ -114,7 +114,7 @@ public class SchermdeelVoorraadBeheer extends Schermdeel {
                         super.updateItem(a, empty);
                         if (a != null) {
                             setGraphic(button);
-                            button.setMinWidth(130);
+                            button.setMinWidth(150);
 
                             button.setOnAction(new EventHandler<ActionEvent>() {
                                 @Override
@@ -144,7 +144,7 @@ public class SchermdeelVoorraadBeheer extends Schermdeel {
 
         setBottom(nieuwArtikel);
         nieuwArtikel.setOnAction(e -> {
-            ArtikelForm newArt = new ArtikelForm(app);
+            FormArtikel newArt = new FormArtikel(app);
             newArt.showAndWait();
         });
     }

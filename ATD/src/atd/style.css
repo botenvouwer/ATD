@@ -85,6 +85,11 @@
     -fx-spacing: 50;
 }
 
+<<<<<<< HEAD
 .Vbox {
     -fx-spacing: 25;
+=======
+ComboBox{
+    -fx-min-width: 300px;
+>>>>>>> c60d4f6714a1ac0b0dcd395cfc852e0611bd12b8
 }

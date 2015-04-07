@@ -12,14 +12,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class ArtikelForm extends Stage {
+public class FormArtikel extends Stage {
 
     private ATD app;
     private Werkplaats $;
     private TextField naam, art;
     private Label naamE = new Label(), artE = new Label();
 
-    public ArtikelForm(ATD app) {
+    public FormArtikel(ATD app) {
 
         super(StageStyle.UTILITY);
         this.app = app;

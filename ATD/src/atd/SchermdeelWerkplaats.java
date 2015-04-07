@@ -79,6 +79,12 @@ public class SchermdeelWerkplaats extends Schermdeel{
             new PropertyValueFactory<Task,TaskType>("type")
         );
         
+        TableColumn c7 = new TableColumn("Notitie");
+        c7.setMinWidth(120);
+        c7.setCellValueFactory(
+            new PropertyValueFactory<Task,String>("note")
+        );
+        
         TableColumn<Task, Task> col_action = new TableColumn<>("Acties");
         
         col_action.setMinWidth(140);
@@ -108,7 +114,7 @@ public class SchermdeelWerkplaats extends Schermdeel{
 
                             button.setOnAction(new EventHandler<ActionEvent>() {
                                 @Override public void handle(ActionEvent event) {
-                                    System.out.println(taak.getCar() + " " +taak.toString());
+                                    app.mainScreen.setCenter(new SchermdeelUitboeken(app, taak));
                                 }
                             });
                         } 
@@ -120,7 +126,7 @@ public class SchermdeelWerkplaats extends Schermdeel{
             }
         });
         
-        tabel.getColumns().addAll(c1, c2, c3, c4, c5, c6, col_action);
+        tabel.getColumns().addAll(c1, c2, c3, c4, c5, c6, c7, col_action);
         tabel.setItems(data);
         
         nieuwTaak.setOnAction(e -> {
