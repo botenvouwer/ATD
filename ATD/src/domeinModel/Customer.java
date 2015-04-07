@@ -69,7 +69,7 @@ public class Customer {
     }
 
     public String toString() {
-        return "customer "+number + " is called " + name + " and lives at " + adress + " " + zipcode + " " + place + "\n List of cars: \n" + getAllCars();
+        return "C"+number + " : " + name + " : " + place;
     }
 
 }

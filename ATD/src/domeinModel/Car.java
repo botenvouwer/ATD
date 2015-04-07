@@ -19,7 +19,7 @@ public class Car {
     }
 
     public String toString() {
-        return brand + " with license plate " + licensePlate;
+        return brand + " : " + licensePlate;
     }
 
     public boolean equals(Object refCar) {
