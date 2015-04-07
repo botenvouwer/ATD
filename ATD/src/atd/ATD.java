@@ -59,11 +59,12 @@ public class ATD extends Application {
         voorraad = new Button("voorraad");
         voorraad.setOnAction(e -> setVoorraad());
         klanten = new Button("klanten");
+        klanten.setOnAction(e -> setKlanten());
         personeel = new Button("personeel");
         werk = new Button("werkplaats");
         werk.setOnAction(e -> setWerkplaats());
         
-        menu.getChildren().addAll(start, voorraad, klanten, werk);
+        menu.getChildren().addAll(start, voorraad, klanten, werk, personeel);
         
         mainScreen.setLeft(menu);
         setStart();
@@ -100,7 +101,11 @@ public class ATD extends Application {
         mainScreen.setCenter(new SchermdeelWerkplaats(this));
     }
     
+    private void setKlanten() {
+        mainScreen.setCenter(new SchermdeelKlanten(this));
+    }
+    
     public static void main(String[] args) {
         launch(args); 
-    }    
+    }   
 }

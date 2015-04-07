@@ -61,6 +61,10 @@ public class Customer implements Serializable{
         return zipcode;
     }
     
+    public String getPlace() {
+        return place;
+    }
+    
     public boolean equals(Object refCustomer) {
         
         if (refCustomer instanceof Customer && ((Customer)refCustomer).getNumber() == this.number) {
