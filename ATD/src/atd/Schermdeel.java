@@ -20,6 +20,7 @@ public abstract class Schermdeel extends BorderPane{
     public Schermdeel(ATD a){
         app = a;
         $ = a.$;
+        getStyleClass().add("schermdeel");
     }
     
 }

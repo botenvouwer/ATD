@@ -28,14 +28,6 @@ public class ATD extends Application {
     public Stage stage;
     private BorderPane mainScreen = new BorderPane();
     
-    /* ff overleggen
-    //main classes we use
-    private Stock stock;
-    private Customers customers;
-    //Invoices invoiceList;
-    //Repairs repairList
-    */
-    
     //domeinmodel
     public Werkplaats $;
     
@@ -99,22 +91,16 @@ public class ATD extends Application {
     
     public void setStart(){
         Start scherm = new Start();
-        scherm.getStyleClass().add("schermdeel");
-        
         mainScreen.setCenter(scherm);
     }
     
     public void setVoorraad(){
-        //SchermdeelVoorraadBeheer scherm = new SchermdeelVoorraadBeheer(stage, stock);
-        //scherm.getStyleClass().add("schermdeel");
-        
-        //mainScreen.setCenter(scherm);
+        SchermdeelVoorraadBeheer scherm = new SchermdeelVoorraadBeheer(this);
+        mainScreen.setCenter(scherm);
     }
     
     public void setWerkplaats(){
         SchermdeelWerkplaats scherm = new SchermdeelWerkplaats(this);
-        scherm.getStyleClass().add("schermdeel");
-        
         mainScreen.setCenter(scherm);
     }
     

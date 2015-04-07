@@ -6,98 +6,113 @@
 package atd;
 
 import domeinModel.Article;
+import domeinModel.Customer;
+import domeinModel.Task;
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 /**
- * Geimplemeteert vanuit subproject voorraadbeheer
  * @author william
  */
-public class SchermdeelVoorraadBeheer extends BorderPane{
+public class SchermdeelVoorraadBeheer extends Schermdeel{
     
-    private Stage applicatie;
-    private Stock voorraad;
-    private VBox records;
+    TableView tabel = new TableView();
+    final ObservableList<Article> data = FXCollections.observableArrayList();
+    Button nieuwArtikel = new Button("Artikel toevoegen");
     
-    public SchermdeelVoorraadBeheer(Stage app, Stock s){
+    public SchermdeelVoorraadBeheer(ATD app){
+        super(app);
         
-        applicatie = app;
-        voorraad = s;
+        data.addAll($.stock.values());
         
-        //Voorraad overzicht
-        ScrollPane container = new ScrollPane();
-        container.setFitToWidth(true);
-        container.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        tabel.setEditable(false);
+        tabel.setPlaceholder(new Label("Geen voorraad"));
         
-        records = new VBox();
-        records.getStyleClass().add("recordContainer");
+        TableColumn c1 = new TableColumn("Nummer");
+        c1.setMinWidth(200);
+        c1.setCellValueFactory(
+            new PropertyValueFactory<Article,Integer>("number")
+        );
         
-        setRecords();
+        TableColumn c2 = new TableColumn("Artikel");
+        c2.setMinWidth(200);
+        c2.setCellValueFactory(
+            new PropertyValueFactory<Article,String>("name")
+        );
         
-        container.setContent(records);
+        TableColumn c3 = new TableColumn("Voorraad");
+        c3.setMinWidth(200);
+        c3.setCellValueFactory(
+            new PropertyValueFactory<Article,Integer>("inStock")
+        );
         
-        Button toevoegen = new Button("Artikel toevoegen");
-        toevoegen.setOnAction(e -> toevoegen());
+        //muteer
+        TableColumn<Article, Article> muteer = new TableColumn<>("Muteren");
+        muteer.setMinWidth(140);
         
-        HBox controls = new HBox();
-        controls.getChildren().addAll(toevoegen);
-        controls.getStyleClass().add("control");
+        muteer.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Article, Article>, ObservableValue<Article>>() {
+            public ObservableValue<Article> call(TableColumn.CellDataFeatures<Article, Article> features) {
+                return new ReadOnlyObjectWrapper(features.getValue());
+            }
+        });
         
-        BorderPane pane = new BorderPane();
-        pane.setCenter(container);
-        pane.setBottom(controls);
+        muteer.setCellFactory(new Callback<TableColumn<Article, Article>, TableCell<Article, Article>>() {
+            public TableCell<Article, Article> call(TableColumn<Article, Article> btnCol) {
+                return new TableCell<Article, Article>() {
+                
+                    Button button = new Button("Muteren");
+                    
+                    public void updateItem(final Article a, boolean empty) {
+                        super.updateItem(a, empty);
+                        if (a != null) {
+                            setGraphic(button);
+                            button.setMinWidth(130);
+                            
+                            button.setOnAction(new EventHandler<ActionEvent>() {
+                                @Override public void handle(ActionEvent event) {
+                                    
+                                    FormMutate form = new FormMutate(app, a);
+                                    form.showAndWait();
+                                    
+                                }
+                            });
+                        } 
+                        else{
+                            setGraphic(null);
+                        }
+                    }
+                };
+            }
+        });
+        
+        //verwijder
+        
+        tabel.getColumns().addAll(c1, c2, c3, muteer);
+        tabel.setItems(data);
+        
+        setCenter(tabel);
+        setBottom(nieuwArtikel);
+        
     }
     
-     public void setRecords(){
-        /*
-        records.getChildren().clear();
-        BorderPane[] record = new BorderPane[voorraad.size()];
-        int index = 0;
-        for(BorderPane b : record){
-            
-            Artikel a = voorraad.get(index);
-            
-            b = new BorderPane();
-            
-            Label artikelNummer = new Label("A"+a.getNummer());
-            artikelNummer.getStyleClass().add("artikelNummer");
-            Label artikelNaam = new Label(a.getNaam());
-            artikelNaam.getStyleClass().add("artikelNaam");
-            Label artikelAantal = new Label(""+a.getVoorraad());
-            artikelAantal.getStyleClass().add("artikelAantal");
-            artikelAantal.setPrefWidth(100);
-            
-            Button muteer = new Button("Muteer");
-            muteer.setOnAction(e -> muteren(a));
-            
-            Button verwijderen = new Button("Verwijderen");
-            verwijderen.setOnAction(e -> verwijderen(a));
-            
-            HBox artikelInfo = new HBox();
-            artikelInfo.getChildren().addAll(artikelNummer, artikelNaam);
-            artikelInfo.getStyleClass().add("artikelInfo");
-            
-            artikelInfo.setMinWidth(500);
-            
-            HBox buttons = new HBox();
-            buttons.getChildren().addAll(muteer, verwijderen);
-            buttons.getStyleClass().add("defSpacing");
-            
-            b.setLeft(artikelInfo);
-            b.setCenter(artikelAantal);
-            b.setRight(buttons);
-            b.getStyleClass().add("record");
-            
-            records.getChildren().add(b);
-            index++;
-         
-         }
-         */
+    public void setRecords(){
+       
     }
     
     public void toevoegen(){
