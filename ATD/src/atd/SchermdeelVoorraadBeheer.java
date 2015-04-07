@@ -109,36 +109,5 @@ public class SchermdeelVoorraadBeheer extends Schermdeel{
         setCenter(tabel);
         setBottom(nieuwArtikel);
         
-    }
-    
-    public void setRecords(){
-       
-    }
-    
-    public void toevoegen(){
-        //ArtikelForm form = new ArtikelForm(applicatie, voorraad);
-        //form.showAndWait();
-        //setRecords();
-    }
-    
-    public void verwijderen(Article a){
-        /*
-        ConfirmBox confirm = new ConfirmBox(applicatie, "Verwijderen", "Weet u zeker dat u A"+a.getNummer()+ " "+a.getNaam()+ " wild verwijderen?");
-        confirm.showAndWait();
-        
-        if(confirm.getGonogo()){
-            voorraad.remove(a);
-            setRecords();
-        }
-        */
-    }
-    
-    public void muteren(Article a){
-        /*
-        MuteerForm form = new MuteerForm(applicatie, a);
-        form.showAndWait();
-        setRecords();
-        */
-    }
-    
+    }    
 }
