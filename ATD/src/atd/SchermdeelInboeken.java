@@ -10,7 +10,6 @@ import domeinModel.Customer;
 import domeinModel.Employee;
 import domeinModel.Task;
 import domeinModel.Task.TaskType;
-import domeinModel.Werkplaats;
 import java.time.LocalDate;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -35,6 +34,9 @@ public class SchermdeelInboeken extends Schermdeel{
     
     public SchermdeelInboeken(ATD a){
         super(a);
+        
+        setTop(meldingen);
+        meldingen.getStyleClass().add("error");
         
         if($.customers.size() == 0){
             meldingen.setText("Er zijn geen klanten. Ga naar klanten beheer en voeg een klant toe. Zonder klant kun je geen taak aanmaken.");
@@ -63,7 +65,7 @@ public class SchermdeelInboeken extends Schermdeel{
         ok.setOnAction(e -> opslaan());
         
         meldingen.getStyleClass().add("error");
-        parent.getChildren().addAll(meldingen, klant, klantSelect, auto, autoSelect, taak, taakSelect, personeel, personeelSelect, datum, date, ok);
+        parent.getChildren().addAll(klant, klantSelect, auto, autoSelect, taak, taakSelect, personeel, personeelSelect, datum, date, ok);
         
         setCenter(parent);
         
