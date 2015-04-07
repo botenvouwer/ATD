@@ -5,6 +5,7 @@
  */
 package domeinModel;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -34,6 +35,10 @@ public class Task {
     
     public Date getDate(){
         return date;
+    }
+    
+    public String getStringDate(){
+        return new SimpleDateFormat("dd-MM-yyyy").format(date);
     }
     
     public TaskType getType(){

@@ -58,11 +58,11 @@ public class SchermdeelWerkplaats extends Schermdeel{
         TableColumn c3 = new TableColumn("Datum");
         c3.setMinWidth(100);
         c3.setCellValueFactory(
-            new PropertyValueFactory<Task,Date>("date")
+            new PropertyValueFactory<Task,String>("stringDate")
         );
         
         TableColumn c4 = new TableColumn("Monteur");
-        c4.setMinWidth(200);
+        c4.setMinWidth(140);
         c4.setCellValueFactory(
             new PropertyValueFactory<Task,Employee>("employee")
         );
