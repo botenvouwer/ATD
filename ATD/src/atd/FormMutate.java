@@ -79,7 +79,7 @@ public class FormMutate extends Stage {
 
         Scene scene = new Scene(wrapper);
         setScene(scene);
-        scene.getStylesheets().add("VoorraadBeheer/style.css");
+        scene.getStylesheets().add("atd/style.css");
         sizeToScene();
 
     }
