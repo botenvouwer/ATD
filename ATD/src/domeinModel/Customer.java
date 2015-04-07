@@ -1,8 +1,9 @@
 package domeinModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Customer {
+public class Customer implements Serializable{
 
     private ArrayList<Car> cars = new ArrayList<Car>();
     private int number;

@@ -1,8 +1,9 @@
 package domeinModel;
 
 import Exceptions.StockException;
+import java.io.Serializable;
 
-public class Article {
+public class Article implements Serializable{
     private String name;
     private int number;
     private int inStock;

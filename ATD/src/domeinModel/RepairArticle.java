@@ -5,11 +5,13 @@
  */
 package domeinModel;
 
+import java.io.Serializable;
+
 /**
  *
  * @author william
  */
-public class RepairArticle {
+public class RepairArticle implements Serializable{
     
     private int quantity;
     private Article article;

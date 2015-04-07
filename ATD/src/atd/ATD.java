@@ -47,11 +47,11 @@ public class ATD extends Application {
     Button werk;
     
     public ATD() {
-        /*try {
+        try {
         $ = new Werkplaats();
         } catch (IOException | ClassNotFoundException ex) {
         System.out.println("test");
-        }*/
+        }
     }
     
     public void start(Stage stage) {
@@ -85,6 +85,7 @@ public class ATD extends Application {
         stage.setScene(scene);
         stage.show();
         stage.setOnCloseRequest(e -> {
+            
             try {
                 $.save();
             } catch (IOException ex) {

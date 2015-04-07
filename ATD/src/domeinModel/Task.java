@@ -5,6 +5,7 @@
  */
 package domeinModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,7 +13,7 @@ import java.util.Date;
  *
  * @author William
  */
-public class Task {
+public class Task implements Serializable{
     
     private Date date;
     public enum TaskType {apk,reparatie}

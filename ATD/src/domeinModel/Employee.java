@@ -5,11 +5,13 @@
  */
 package domeinModel;
 
+import java.io.Serializable;
+
 /**
  *
  * @author william
  */
-public class Employee {
+public class Employee implements Serializable{
     
     private String name;
     

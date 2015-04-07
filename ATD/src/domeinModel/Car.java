@@ -1,6 +1,8 @@
 package domeinModel;
 
-public class Car {
+import java.io.Serializable;
+
+public class Car implements Serializable{
 
     private String licensePlate;
     private String brand;
