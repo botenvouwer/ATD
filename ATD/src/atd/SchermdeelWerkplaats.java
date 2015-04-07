@@ -6,8 +6,10 @@
 package atd;
 
 import domeinModel.Car;
+import domeinModel.Customer;
 import domeinModel.Employee;
 import domeinModel.Task;
+import domeinModel.Task.TaskType;
 import java.util.Date;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
@@ -41,71 +43,82 @@ public class SchermdeelWerkplaats extends Schermdeel{
         tabel.setEditable(false);
         tabel.setPlaceholder(new Label("Geen taken"));
         
-        TableColumn c1 = new TableColumn("datum");
+        TableColumn c1 = new TableColumn("Naam");
         c1.setMinWidth(200);
-        TableColumn c2 = new TableColumn("type");
+        c1.setCellValueFactory(
+            new PropertyValueFactory<Task,Customer>("customer")
+        );
+        
+        TableColumn c2 = new TableColumn("Auto");
         c2.setMinWidth(100);
-        TableColumn c3 = new TableColumn("uren");
+        c2.setCellValueFactory(
+            new PropertyValueFactory<Task,Car>("car")
+        );
+        
+        TableColumn c3 = new TableColumn("Datum");
         c3.setMinWidth(100);
-        TableColumn c4 = new TableColumn("klaar");
+        c3.setCellValueFactory(
+            new PropertyValueFactory<Task,Date>("date")
+        );
+        
+        TableColumn c4 = new TableColumn("Monteur");
         c4.setMinWidth(200);
-        TableColumn c5 = new TableColumn("Werknemer");
+        c4.setCellValueFactory(
+            new PropertyValueFactory<Task,Employee>("employee")
+        );
+        
+        TableColumn c5 = new TableColumn("Uren");
         c5.setMinWidth(100);
-        TableColumn c6= new TableColumn("Auto");
+        c5.setCellValueFactory(
+            new PropertyValueFactory<Task,Double>("hours")
+        );
+        
+        TableColumn c6 = new TableColumn("Type");
         c6.setMinWidth(400);
+        c6.setCellValueFactory(
+            new PropertyValueFactory<Task,TaskType>("type")
+        );
         
+        TableColumn<Task, Task> col_action = new TableColumn<>("Acties");
         
-        TableColumn<Task, Task> col_action = new TableColumn<>("Action");
-        
-        col_action.setMinWidth(400);
+        col_action.setMinWidth(140);
         
         col_action.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Task, Task>, ObservableValue<Task>>() {
-          @Override public ObservableValue<Task> call(TableColumn.CellDataFeatures<Task, Task> features) {
-              return new ReadOnlyObjectWrapper(features.getValue());
-          }
+            @Override public ObservableValue<Task> call(TableColumn.CellDataFeatures<Task, Task> features) {
+                return new ReadOnlyObjectWrapper(features.getValue());
+            }
         });
         
         col_action.setCellFactory(new Callback<TableColumn<Task, Task>, TableCell<Task, Task>>() {
-          @Override public TableCell<Task, Task> call(TableColumn<Task, Task> btnCol) {
-            return new TableCell<Task, Task>() {
-              final Button button = new Button("test"); {
-                button.setMinWidth(130);
-              }
-              @Override public void updateItem(final Task person, boolean empty) {
-                super.updateItem(person, empty);
-                if (person != null) {
-                  setGraphic(button);
-                  button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override public void handle(ActionEvent event) {
-                      System.out.println(person.getCar() + " " +person.toString());
+            public TableCell<Task, Task> call(TableColumn<Task, Task> btnCol) {
+                return new TableCell<Task, Task>() {
+                
+                    Button button = new Button("Uitboeken");
+                    
+                    public void updateItem(final Task taak, boolean empty) {
+                        super.updateItem(taak, empty);
+                        if (taak != null) {
+                          setGraphic(button);
+                          
+                          button.setMinWidth(130);
+                          
+                            if(taak.getDone()){
+                                button.setDisable(true);
+                            }
+
+                            button.setOnAction(new EventHandler<ActionEvent>() {
+                                @Override public void handle(ActionEvent event) {
+                                    System.out.println(taak.getCar() + " " +taak.toString());
+                                }
+                            });
+                        } 
+                        else{
+                            setGraphic(null);
+                        }
                     }
-                  });
-                } else {
-                  setGraphic(null);
-                }
-              }
-            };
-          }
+                };
+            }
         });
-        
-        c1.setCellValueFactory(
-            new PropertyValueFactory<Task,Date>("date")
-        );
-        c2.setCellValueFactory(
-            new PropertyValueFactory<Task,Task.TaskType>("type")
-        );
-        c3.setCellValueFactory(
-            new PropertyValueFactory<Task,Double>("hours")
-        );
-        c4.setCellValueFactory(
-            new PropertyValueFactory<Task,Boolean>("done")
-        );
-        c5.setCellValueFactory(
-            new PropertyValueFactory<Task,Employee>("employee")
-        );
-        c6.setCellValueFactory(
-            new PropertyValueFactory<Task,Car>("car")
-        );
         
         tabel.getColumns().addAll(c1, c2, c3, c4, c5, c6, col_action);
         tabel.setItems(data);
