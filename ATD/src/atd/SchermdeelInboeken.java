@@ -38,11 +38,11 @@ public class SchermdeelInboeken extends Schermdeel{
         setTop(meldingen);
         meldingen.getStyleClass().add("error");
         
-        if($.customers.size() == 0){
+        if($.customers.isEmpty()){
             meldingen.setText("Er zijn geen klanten. Ga naar klanten beheer en voeg een klant toe. Zonder klant kun je geen taak aanmaken.");
             return;
         }
-        else if($.employees.size() == 0){
+        else if($.employees.isEmpty()){
             meldingen.setText("Er zijn geen werknemers. Ga naar werknemer beheer en voeg een klant toe. Zonder werknemers kun je geen taak aanmaken.");
             return;
         }
@@ -76,7 +76,7 @@ public class SchermdeelInboeken extends Schermdeel{
         autoSelect.getItems().clear();
         autoSelect.getItems().addAll(c.getAllCars());
         
-        if(c.getAllCars().size() == 0){
+        if(c.getAllCars().isEmpty()){
             meldingen.setText("Deze klant heeft nog auto's voeg deze toe in klant beheer");
         }
         else{
