@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 public class ATD extends Application {
     
     public Stage stage;
-    private BorderPane mainScreen = new BorderPane();
+    public BorderPane mainScreen = new BorderPane();
     
     //domeinmodel
     public Werkplaats $;
@@ -72,7 +72,6 @@ public class ATD extends Application {
         scene.getStylesheets().add("atd/style.css");
         
         stage.setTitle("Auto Totaal Dienst");
-        stage.sizeToScene();
         stage.getIcons().add(new Image("atd/icon.png"));
         stage.setScene(scene);
         stage.show();
@@ -84,24 +83,21 @@ public class ATD extends Application {
                 Logger.getLogger(ATD.class.getName()).log(Level.SEVERE, null, ex);
             }
         }); // save data
-        stage.setMinHeight(600);
-        stage.setMinWidth(800);
-        
+        //stage.setMinHeight(600);
+        //stage.setMinWidth(800);
+        stage.setMaximized(true);
     }
     
     public void setStart(){
-        Start scherm = new Start();
-        mainScreen.setCenter(scherm);
+        mainScreen.setCenter(new Start());
     }
     
     public void setVoorraad(){
-        SchermdeelVoorraadBeheer scherm = new SchermdeelVoorraadBeheer(this);
-        mainScreen.setCenter(scherm);
+        mainScreen.setCenter(new SchermdeelVoorraadBeheer(this));
     }
     
     public void setWerkplaats(){
-        SchermdeelWerkplaats scherm = new SchermdeelWerkplaats(this);
-        mainScreen.setCenter(scherm);
+        mainScreen.setCenter(new SchermdeelWerkplaats(this));
     }
     
     public static void main(String[] args) {

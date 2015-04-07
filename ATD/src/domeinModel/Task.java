@@ -7,6 +7,7 @@ package domeinModel;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ import java.util.Date;
  */
 public class Task implements Serializable{
     
-    private Date date;
+    private LocalDate date;
     public enum TaskType {apk,reparatie}
     private TaskType type;
     private double hours;
@@ -24,9 +25,10 @@ public class Task implements Serializable{
     private Customer customer;
     private Car car;
     private Employee repairGuy;
+    private String note;
     private ArrayList<RepairArticle> usedArticle = new ArrayList<RepairArticle>();
     
-    public Task(Date d, TaskType t, Car car, Customer c, Employee rg){
+    public Task(LocalDate d, TaskType t, Car car, Customer c, Employee rg){
         date = d;
         type = t;
         this.car = car;
@@ -34,16 +36,20 @@ public class Task implements Serializable{
         repairGuy = rg;
     }
     
-    public Date getDate(){
+    public LocalDate getDate(){
         return date;
-    }
-    
-    public String getStringDate(){
-        return new SimpleDateFormat("dd-MM-yyyy").format(date);
     }
     
     public TaskType getType(){
         return type;
+    }
+    
+    public String getNote(){
+        return note;
+    }
+    
+    public void setNote(String n){
+        note = n;
     }
     
     public Car getCar(){

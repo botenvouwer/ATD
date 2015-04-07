@@ -10,7 +10,7 @@ import domeinModel.Customer;
 import domeinModel.Employee;
 import domeinModel.Task;
 import domeinModel.Task.TaskType;
-import java.util.Date;
+import java.time.LocalDate;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -44,21 +44,21 @@ public class SchermdeelWerkplaats extends Schermdeel{
         tabel.setPlaceholder(new Label("Geen taken"));
         
         TableColumn c1 = new TableColumn("Naam");
-        c1.setMinWidth(200);
+        c1.setMinWidth(250);
         c1.setCellValueFactory(
             new PropertyValueFactory<Task,Customer>("customer")
         );
         
         TableColumn c2 = new TableColumn("Auto");
-        c2.setMinWidth(100);
+        c2.setMinWidth(220);
         c2.setCellValueFactory(
             new PropertyValueFactory<Task,Car>("car")
         );
         
         TableColumn c3 = new TableColumn("Datum");
-        c3.setMinWidth(100);
+        c3.setMinWidth(120);
         c3.setCellValueFactory(
-            new PropertyValueFactory<Task,String>("stringDate")
+            new PropertyValueFactory<Task,LocalDate>("date")
         );
         
         TableColumn c4 = new TableColumn("Monteur");
@@ -68,13 +68,13 @@ public class SchermdeelWerkplaats extends Schermdeel{
         );
         
         TableColumn c5 = new TableColumn("Uren");
-        c5.setMinWidth(100);
+        c5.setMinWidth(120);
         c5.setCellValueFactory(
             new PropertyValueFactory<Task,Double>("hours")
         );
         
         TableColumn c6 = new TableColumn("Type");
-        c6.setMinWidth(400);
+        c6.setMinWidth(120);
         c6.setCellValueFactory(
             new PropertyValueFactory<Task,TaskType>("type")
         );
@@ -122,6 +122,10 @@ public class SchermdeelWerkplaats extends Schermdeel{
         
         tabel.getColumns().addAll(c1, c2, c3, c4, c5, c6, col_action);
         tabel.setItems(data);
+        
+        nieuwTaak.setOnAction(e -> {
+            app.mainScreen.setCenter(new SchermdeelInboeken(app));
+        });
         
         setCenter(tabel);
         setBottom(nieuwTaak);
