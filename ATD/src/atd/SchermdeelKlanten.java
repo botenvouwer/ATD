@@ -99,7 +99,10 @@ public class SchermdeelKlanten extends Schermdeel {
         tabel.setItems(data);
         
         
-        nieuweKlant.setOnAction(e -> System.out.println($.customers));
+        nieuweKlant.setOnAction(e -> {
+            AddCustomerForm newC = new AddCustomerForm(app);
+            newC.showAndWait();
+        });
         setCenter(tabel);
         setBottom(nieuweKlant);
        
