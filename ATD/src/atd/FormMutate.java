@@ -119,7 +119,7 @@ public class FormMutate extends Stage {
             cf.showAndWait();
             if (cf.getGonogo()) {
                 try {
-                    artikel.setInStock(artikel.getInStock() + Integer.parseInt(aantal.getText()));
+                    artikel.stockIn(Integer.parseInt(aantal.getText()));
                     hide();
                     app.setVoorraad();
                 } catch (StockException ex) {
@@ -135,9 +135,8 @@ public class FormMutate extends Stage {
             ConfirmBox cf = new ConfirmBox(this, "telling", "Klopt het dat u de voorraad van " + artikel.getNumber() + ", " + artikel.getName() + " met " + aantal.getText() + " wil verminderen?");
             cf.showAndWait();
             if (cf.getGonogo()) {
-                
                 try {
-                    artikel.setInStock(artikel.getInStock() - Integer.parseInt(aantal.getText()));
+                    artikel.StockOut(Integer.parseInt(aantal.getText()));
                     hide();
                     app.setVoorraad();
                 } catch (StockException ex) {

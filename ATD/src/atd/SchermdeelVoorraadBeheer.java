@@ -121,31 +121,32 @@ public class SchermdeelVoorraadBeheer extends Schermdeel {
                                 public void handle(ActionEvent event) {
                                     ConfirmBox confirm = new ConfirmBox(app.stage, "Verwijderen", "Weet u zeker dat u " + a.getNumber() + " " + a.getName() + " wilt verwijderen?");
                                     confirm.showAndWait();
-
                                     if (confirm.getGonogo()) {
-                                        app.$.stock.remove(a);
-
+                                        $.stock.remove(a.getNumber());
+                                        app.setVoorraad();
                                     }
                                 }
                             });
-                            } 
-                        else{
+                        } else {
                             setGraphic(null);
                         }
-                        }
-                    };
+                    }
+                };
             }
 
-            });
-        
-            tabel.getColumns ()
+        });
 
-            .addAll(c1, c2, c3, muteer, verwijder);
-            tabel.setItems (data);
+        tabel.getColumns()
+                .addAll(c1, c2, c3, muteer, verwijder);
+        tabel.setItems(data);
 
-            setCenter(tabel);
+        setCenter(tabel);
 
-            setBottom(nieuwArtikel);
-
-        }    
+        setBottom(nieuwArtikel);
+        nieuwArtikel.setOnAction(e -> {
+            ArtikelForm newArt = new ArtikelForm(app);
+            newArt.showAndWait();
+        });
     }
+
+}

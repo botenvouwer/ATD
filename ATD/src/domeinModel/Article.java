@@ -47,15 +47,15 @@ public class Article implements Serializable{
     
     public void StockOut(int lose) throws StockException{
         
+        if(lose < 1){
+            throw new StockException();
+        }
+        
         if(lose > inStock){
             throw new StockException("Uitboek aantal is groter dan voorraad en voorraad mag niet negatief geboekt worden");
         }
-        
-        if(lose >= 0){
-            inStock -= lose;
-        }
         else{
-            throw new StockException();
+            inStock -= lose;
         }
     }
     
