@@ -62,10 +62,10 @@ public class SchermdeelInboeken extends Schermdeel{
         
         ok.setOnAction(e -> opslaan());
         
+        meldingen.getStyleClass().add("error");
         parent.getChildren().addAll(meldingen, klant, klantSelect, auto, autoSelect, taak, taakSelect, personeel, personeelSelect, datum, date, ok);
         
         setCenter(parent);
-        getStyleClass().add("center");
         
         
     }

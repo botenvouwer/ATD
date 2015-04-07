@@ -84,3 +84,7 @@
 .buttonsMuteer{
     -fx-spacing: 50;
 }
+
+ComboBox{
+    -fx-min-width: 300px;
+}
