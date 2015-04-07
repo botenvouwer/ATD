@@ -12,9 +12,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import domeinModel.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,7 +38,7 @@ public class ATD extends Application {
     */
     
     //domeinmodel
-    public Werkplaats $ = new Werkplaats();
+    public Werkplaats $;
     
     //Menu buttons
     Button start;
@@ -43,15 +47,18 @@ public class ATD extends Application {
     Button personeel;
     Button werk;
     
-    //file names of stored data
-    private String stockFile = "stock.obj";
-    private String customerFile = "cust.obj";
-    //String repairFile = "stock.obj":
+    /*public ATD() {
+        try {
+        $ = new Werkplaats();
+        } catch (IOException | ClassNotFoundException ex) {
+        System.out.println("test");
+        }
+        }*/
     
     public void start(Stage stage) {
         this.stage = stage;
         
-        load(); //load stored data
+        //load(); //load stored data
         
         VBox menu = new VBox();
         menu.getStyleClass().add("mainmenu");
@@ -78,9 +85,10 @@ public class ATD extends Application {
         stage.getIcons().add(new Image("atd/icon.png"));
         stage.setScene(scene);
         stage.show();
-        stage.setOnCloseRequest(e -> save()); // save data
+        //stage.setOnCloseRequest(); // save data
         stage.setMinHeight(600);
         stage.setMinWidth(800);
+        
     }
     
     public void setStart(){
@@ -106,25 +114,5 @@ public class ATD extends Application {
     
     public static void main(String[] args) {
         launch(args); 
-    }
-    
-    private void save(){
-        //todo: save all data on close
-    }
-    
-    private void load(){
-        
-        
-        
-    }
-    
-    //Dit zou efficenter kunnen (Bijvoorbeeld dynamisch) maar geen tijd voor fuck het dit werkt ook
-    private void loadKlanten(){
-        
-    }
-    
-    private void loadPersoneel(){
-        
-    }
-    
+    }    
 }
