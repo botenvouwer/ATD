@@ -11,6 +11,7 @@ import domeinModel.Employee;
 import domeinModel.Task;
 import domeinModel.Task.TaskType;
 import java.time.LocalDate;
+import java.util.Comparator;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
