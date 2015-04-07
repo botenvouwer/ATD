@@ -101,7 +101,7 @@ public class ATD extends Application {
         mainScreen.setCenter(new SchermdeelWerkplaats(this));
     }
     
-    private void setKlanten() {
+    public void setKlanten() {
         mainScreen.setCenter(new SchermdeelKlanten(this));
     }
     

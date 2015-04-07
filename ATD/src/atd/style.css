@@ -84,3 +84,7 @@
 .buttonsMuteer{
     -fx-spacing: 50;
 }
+
+.Vbox {
+    -fx-spacing: 25;
+}
