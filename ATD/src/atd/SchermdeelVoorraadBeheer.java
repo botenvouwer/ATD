@@ -144,7 +144,7 @@ public class SchermdeelVoorraadBeheer extends Schermdeel {
 
         setBottom(nieuwArtikel);
         nieuwArtikel.setOnAction(e -> {
-            ArtikelForm newArt = new ArtikelForm(app);
+            FormArtikel newArt = new FormArtikel(app);
             newArt.showAndWait();
         });
     }
