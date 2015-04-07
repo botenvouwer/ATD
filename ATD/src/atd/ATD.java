@@ -11,7 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import domeinModel.*;
-<<<<<<< HEAD
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Calendar;
@@ -19,8 +18,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-=======
->>>>>>> 3fcac40b12d5dba4ae3ef249e7025b7c97ed7bbe
 
 /**
  *
@@ -49,13 +46,13 @@ public class ATD extends Application {
     Button personeel;
     Button werk;
     
-    /*public ATD() {
-        try {
+    public ATD() {
+        /*try {
         $ = new Werkplaats();
         } catch (IOException | ClassNotFoundException ex) {
         System.out.println("test");
-        }
         }*/
+    }
     
     public void start(Stage stage) {
         this.stage = stage;
@@ -87,7 +84,13 @@ public class ATD extends Application {
         stage.getIcons().add(new Image("atd/icon.png"));
         stage.setScene(scene);
         stage.show();
-        //stage.setOnCloseRequest(); // save data
+        stage.setOnCloseRequest(e -> {
+            try {
+                $.save();
+            } catch (IOException ex) {
+                Logger.getLogger(ATD.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }); // save data
         stage.setMinHeight(600);
         stage.setMinWidth(800);
         
