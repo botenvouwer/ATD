@@ -3,7 +3,6 @@
  */
 package atd;
 
-import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import domeinModel.*;
+<<<<<<< HEAD
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Calendar;
@@ -19,6 +19,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+>>>>>>> 3fcac40b12d5dba4ae3ef249e7025b7c97ed7bbe
 
 /**
  *
