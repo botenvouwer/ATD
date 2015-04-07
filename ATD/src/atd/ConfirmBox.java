@@ -42,7 +42,7 @@ public class ConfirmBox extends Stage{
         con.setBottom(box);
         
         Scene scene = new Scene(con);
-        scene.getStylesheets().add("VoorraadBeheer/style.css");
+        scene.getStylesheets().add("atd/style.css");
         setScene(scene);
         sizeToScene();
         terug.requestFocus();

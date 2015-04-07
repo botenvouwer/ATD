@@ -64,6 +64,7 @@ ATD/nbproject/project.properties
 /ATD/kutzooi/nbproject/private/
 /ATD/kutzooi/build/
 /ATD/kutzooi/dist/
+<<<<<<< HEAD
 *.xml
 ATD/nbproject/build-impl.xml
 *.properties
@@ -72,3 +73,6 @@ ATD/nbproject/genfiles.properties
 *.properties
 ATD/nbproject/build-impl.xml
 ATD/nbproject/project.properties
+=======
+ATD/stock
+>>>>>>> 6ab845815a182fe3fb6dc475c883ef7bc64e2f47
