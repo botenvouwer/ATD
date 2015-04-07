@@ -5,11 +5,8 @@
  */
 package domeinModel;
 
-<<<<<<< HEAD
 import java.io.Serializable;
-=======
 import java.text.SimpleDateFormat;
->>>>>>> 82b1e9f4a8e6141f9bc95bb9fae0f9f776dbceb7
 import java.util.ArrayList;
 import java.util.Date;
 
