@@ -46,6 +46,7 @@ public class AddCustomerForm extends Stage{
         nameL = new Label("Naam: ");
         nameL.setMinWidth(150);
         nameE = new Label("");
+        nameE.getStyleClass().add("error");
         nameI = new TextField();
         row1.getChildren().addAll(nameI,nameE);
         colum1.getChildren().addAll(nameL, row1);
@@ -56,6 +57,7 @@ public class AddCustomerForm extends Stage{
         adressL = new Label("Straat en huisnummer: ");
         adressL.setMinWidth(150);
         adressE = new Label("");
+        adressE.getStyleClass().add("error");
         adressI = new TextField();
         row2.getChildren().addAll(adressI,adressE);
         colum2.getChildren().addAll(adressL, row2);
@@ -66,6 +68,7 @@ public class AddCustomerForm extends Stage{
         zipcodeL = new Label("Postcode: ");
         zipcodeL.setMinWidth(150);
         zipcodeE = new Label("");
+        zipcodeE.getStyleClass().add("error");
         zipcodeI = new TextField();
         row3.getChildren().addAll(zipcodeI,zipcodeE);
         colum3.getChildren().addAll(zipcodeL, row3);
@@ -76,6 +79,7 @@ public class AddCustomerForm extends Stage{
         placeL = new Label("Plaats: ");
         placeL.setMinWidth(150);
         placeE = new Label("");
+        placeE.getStyleClass().add("error");
         placeI = new TextField();
         row4.getChildren().addAll(placeI,placeE);
         colum4.getChildren().addAll(placeL, row4);
