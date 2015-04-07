@@ -44,7 +44,6 @@ public class Werkplaats {
         employees.add(new Employee("jan"));
         
         //klanten collectie
-        
         Customer c = new Customer(customers.size() + 1, "William loosman", "zate 31", "8483HG", "Urk");
         c.addCar(new Car("23-fg-34", "Audi a5"));
         c.addCar(new Car("21-fg-34", "Bentley gf66"));
@@ -125,24 +124,21 @@ public class Werkplaats {
         File employeesFile = new File("employees");
         ObjectOutputStream oos1 = new ObjectOutputStream(new FileOutputStream(employeesFile));
         oos1.writeObject(employees);
+        oos1.close();
         
         File customersFile = new File("customers");
         ObjectOutputStream oos2 = new ObjectOutputStream(new FileOutputStream(customersFile));
         oos2.writeObject(customers);
+        oos2.close();
         
         File stockFile = new File("stock");
         ObjectOutputStream oos3 = new ObjectOutputStream(new FileOutputStream(stockFile));
         oos3.writeObject(stock);
+        oos3.close();
         
         File agendaFile = new File("agenda");
         ObjectOutputStream oos4 = new ObjectOutputStream(new FileOutputStream(agendaFile));
-        oos4.writeObject(agenda);
-        
-        oos1.close();
-        oos2.close();
-        oos3.close();
-        oos4.close();
-        
+        oos4.writeObject(agenda);        
     }
 
 }
