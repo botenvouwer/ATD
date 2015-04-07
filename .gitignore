@@ -64,3 +64,11 @@ ATD/nbproject/project.properties
 /ATD/kutzooi/nbproject/private/
 /ATD/kutzooi/build/
 /ATD/kutzooi/dist/
+*.xml
+ATD/nbproject/build-impl.xml
+*.properties
+ATD/nbproject/genfiles.properties
+*.properties
+*.properties
+ATD/nbproject/build-impl.xml
+ATD/nbproject/project.properties
