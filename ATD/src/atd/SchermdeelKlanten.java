@@ -6,13 +6,10 @@
 package atd;
 
 import domeinModel.Customer;
-import domeinModel.Task;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
@@ -81,12 +78,7 @@ public class SchermdeelKlanten extends Schermdeel {
 
                             button.setMinWidth(130);
 
-                            button.setOnAction(new EventHandler<ActionEvent>() {
-                                @Override
-                                public void handle(ActionEvent event) {
-
-                                }
-                            });
+                            button.setOnAction(e -> setAutoLijst(customer));
                         } else {
                             setGraphic(null);
                         }
@@ -107,5 +99,9 @@ public class SchermdeelKlanten extends Schermdeel {
         setBottom(nieuweKlant);
        
 
+    }
+    
+    public void setAutoLijst(Customer theC) {
+        app.mainScreen.setCenter(new SchermdeelAutoLijst(app, theC.getAllCars()));
     }
 }
