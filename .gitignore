@@ -61,3 +61,6 @@ $RECYCLE.BIN/
 /ATD/build/
 /ATD/dist/
 ATD/nbproject/project.properties
+/ATD/kutzooi/nbproject/private/
+/ATD/kutzooi/build/
+/ATD/kutzooi/dist/

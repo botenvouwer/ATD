@@ -12,7 +12,7 @@ package Exceptions;
 public class StockException extends Exception{
     
     public StockException(){
-        super("Voorraad kan aleen gemuteerd worden met positieve nummers of 0 (s >= 0)");
+        super("Voorraad kan alleen gemuteerd worden met positieve nummers of 0 (s >= 0)");
     }
     
     public StockException(String m){
